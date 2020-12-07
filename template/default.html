@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Hop Tracer</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; background:white; }
+	#map { width: 100%; height: 600px;}
+	input[type=text] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  top: 10%
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+.btn{display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 6%;
+  top: 10%
+  background-color: white;}
+</style>
+</head>
+<body>
+<h3 style="text-align: center;">Track your Data Packets!!!</h3>
+<div class="search">
+<form action="map" class="ser" id="search" method="POST">
+  {% csrf_token %}
+  <div>
+    <input type="text" name="site"  placeholder="search...">
+    <button class="btn">submit</button>
+  </div>
+</form>
+</div>
+
+<div id="map"></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoicmF2aTY0IiwiYSI6ImNrZmV6eHJ6OTA3ajcycWw0Nng2OGlhZ2cifQ.GLS6gPqn9SlQbJDdqJqW9Q';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-0.118092, 51.509865],
+        zoom: 8
+    });
+</script>
+
+</body>
+</html>
